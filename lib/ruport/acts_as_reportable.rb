@@ -149,7 +149,7 @@ module Ruport
       # Note: column names for attributes of included models will be qualified
       # with the name of the association. 
       #
-      def report_table(number = :all, options = {})
+      def report_table(conditions, options = {})
         only = options.delete(:only)
         except = options.delete(:except)
         methods = options.delete(:methods)
@@ -162,7 +162,7 @@ module Ruport
           options[:include] = get_include_for_find(includes)
         end
 
-        data = [*find(number, options)]
+        data = [*where(conditions)]
         data.compact!
         columns = []
         data = data.map do |r|

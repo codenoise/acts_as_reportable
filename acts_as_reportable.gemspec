@@ -1,4 +1,4 @@
-AAR_VERSION = "1.1.1"
+AAR_VERSION = "1.1.2"
 
 spec = Gem::Specification.new do |spec|
   spec.name = "acts_as_reportable"
