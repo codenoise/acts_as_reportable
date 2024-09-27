@@ -154,7 +154,6 @@ module Ruport
         except = options.delete(:except)
         methods = options.delete(:methods)
         includes = options.delete(:include)
-        sql_includes = options.delete(:includes)
         filters = options.delete(:filters) 
         transforms = options.delete(:transforms)
         record_class = options.delete(:record_class) || Ruport::Data::Record
@@ -163,11 +162,7 @@ module Ruport
           options[:include] = get_include_for_find(includes)
         end
 
-        if sql_includes
-          data = [*includes(sql_includes).where(conditions)]
-        else
-          data = [*where(conditions)]
-        end
+        data = [*where(conditions)]
 
         data.compact!
         columns = []
